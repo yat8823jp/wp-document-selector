@@ -3,34 +3,34 @@ jQuery(function($){
 	var selector_id = "select#selectname";
 	var elem_all = Array();
 
-	activeSelect(selector_id);
+	activeSelect();
 
-	function activeSelect(selector){
+	function activeSelect(){
 		//selected display "block"
-		var content = $(selector).children("option:selected");
+		var content = $(selector_id).children("option:selected");
 		content = "#"+content[0].className;
 		$(content).css("display","block");
 	}
 
-	function changeActive(selector){
+	function changeActive(){
 		//active foucus check
-		var activeclass = $(selector).find("option").prop("selectedIndex",0);
+		var activeclass = $(selector_id).find("option").prop("selectedIndex",0);
 
 		//selected display "hidden"
-		var selectall = $(selector).children("option");
+		var selectall = $(selector_id).children("option");
 
 		for(var i=0; i<selectall.length; i++){
 			elem_all[i] = "#" + selectall[i].className;
 			$(elem_all[i]).css("display","none");
 		}
 
-		activeSelect(selector);
+		activeSelect();
 	}
 	
-	if (document.addEventListener) {
-		 document.querySelector(selector_id).addEventListener("change",changeActive(selector_id),false);
+	if (document.addEventListener){
+		 document.querySelector(selector_id).addEventListener("change",changeActive,false);
 	}else{
 		//for ie8&Opera
-		document.querySelector(selector_id).attachEvent("onclick",changeActive(selector_id));
+		document.querySelector(selector_id).attachEvent("onclick",changeActive);
 	};
-})(jQuery);
+});
