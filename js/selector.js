@@ -1,4 +1,5 @@
 jQuery(function($){
+//ver 1.0
 // console.log("aaa");
 	var selector_id = "select#selectname";
 	var elem_all = Array();
