@@ -13,7 +13,9 @@ function selectorjs_read(){
 	wp_enqueue_script('selector',plugins_url() . '/wp-document-selector/js/selector.js',false);
 }
 
-add_action('wp_print_scripts','selectorjs_read');
+if(! is_admin()){
+  add_action('wp_print_scripts','selectorjs_read');
+}
 
 /*------------Custom field----------------*/
 
